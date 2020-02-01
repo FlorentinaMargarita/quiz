@@ -1,0 +1,26 @@
+.fonto{
+  font-family: 'Monoton', cursive;
+}
+
+.img {
+  width: 400px;
+}
+
+
+.space{
+  display: flex;
+  justify-content: space-around;
+  }
+
+  .orange{
+    background-color: orange;
+  }
+
+  .slaboFont {
+    font-family: 'Slabo', monospace;
+  }
+
+  .button{
+    border-radius: 10px;
+    margin-left: 10px;
+  }

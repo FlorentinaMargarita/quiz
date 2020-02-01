@@ -1,0 +1,18 @@
+
+.rockmySoul{
+background-color: orange;
+padding: 10px;
+}
+
+.img {
+  width: 700px;
+}
+
+.fonto{
+  display: flex;
+  font-family: 'Monoton', cursive;
+  font-size: 5rem;
+  margin-left: 70px;
+  margin-top: 30px;
+  align-self: center;
+}

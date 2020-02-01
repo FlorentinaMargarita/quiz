@@ -1,0 +1,83 @@
+<div class="TiAmo">
+
+<!-- <div class="row">
+  <div class="col-6">
+    <h3 class="fonto white">Quiz</h3>
+  </div>
+</div> -->
+<br>
+<div id="quiz">
+  <h2 class="fonto text-center font-weight-normal white">{{quiz.name}}</h2>
+
+  <!-- <div class="white" *ngIf="mode=='quiz' && quiz"> -->
+    <br>
+    <div class="slaboFont" *ngFor="let question of filteredQuestions;">
+      <div class="badge badge-info">Frage {{pager.index + 1}} von {{pager.count}}.</div>
+
+      <div class="container" *ngIf="config.duration" class="badge badge-info float-right">Zeit: {{ellapsedTime}} / {{duration}}</div>
+      <h3 class="font-weight-normal">{{pager.index + 1}}.
+        <span [innerHTML]="question.name"></span>
+      </h3>
+      <div class="container row text-left options">
+        <div class="col-6" *ngFor="let option of question.options">
+          <div class="option">
+            <label class="font-weight-normal" [attr.for]="option.id">
+              <input id="{{option.id}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option);" /> {{option.name}}
+            </label>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+    <hr />
+
+    <div class="text-center slaboFont">
+      <div class="somewhitespace">
+      <!-- <button class="btn btn-default" *ngIf="config.allowBack" (click)="goTo(0);">Erste Frage</button> -->
+      <button class="btn btn-default" *ngIf="config.allowBack" (click)="goTo(pager.index - 1);">Vorherige Frage</button>
+
+      <button class="btn btn-default" (click)="goTo(pager.index + 1);">Nächste Frage</button>
+      <!-- <button class="btn btn-default" *ngIf="config.allowBack" (click)="goTo(pager.count - 1);">Letzte Frage</button> -->
+    </div>
+
+      <br>
+      <br>
+      <div class="space">
+      <a href="https://www.facebook.com/metropolwien/" class="fa fa-facebook"></a>
+      <a href="https://www.instagram.com/wienermetropol/" class="fa fa-instagram"></a>
+      <a href="https://www.wiener-metropol.at/" class="fa fa-globe"></a>
+    </div>
+    <br>
+    <button class="button button5" (click)='best()'>hier gehts zu den Fotos</button>
+      <!--<pagination *ngIf="config.showPager" direction-links="false" total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()"></pagination>-->
+    </div>
+  </div>
+
+
+  <div class="result container" *ngIf="mode=='result'">
+    <h2 class="fonto">Quiz Resultat</h2>
+    <div *ngFor="let question of quiz.questions; let index = index">
+      <div class="result-question">
+        <h5>{{index + 1}}. {{question.name}}</h5>
+        <div class="row">
+          <div class="col-6" *ngFor="let Option of question.options">
+            <input id="{{Option.id}}" type="checkbox" disabled="disabled" [(ngModel)]="Option.selected" /> {{Option.name}}
+          </div>
+        </div>
+        <div class="p-1 m-2 alert {{ isCorrect(question) == 'richtig'? 'alert-success': 'alert-danger'}}">Ihre Antwort ist {{isCorrect(question)}}.</div>
+      </div>
+    </div>
+    <br>
+    <h4 class="fonto"> <a href="https://www.wiener-metropol.at/show_content.php?sid=22&Spielort_UniqueId=1@THINKSERVER.Metropol2011.dbo.&submit=Suchen"> Hier </a> können Sie Ihr Ticket sichern!</h4>
+  </div>
+  <br>
+  <br>
+
+  <!-- <hr /> -->
+  <!-- <div *ngIf="mode!='result'"> -->
+    <!-- <button class="btn btn-warning" (click)="mode = 'quiz'">Quiz</button> -->
+    <!-- <button class="btn btn-info" (click)="mode = 'review'">Auswertung</button>
+    <button class="btn btn-primary" (click)="onSubmit()">Quiz auswerten</button>
+    <a class="btn btn-warning rounded-circle" href="https://www.wiener-metropol.at/show_content.php?sid=22&Spielort_UniqueId=1@THINKSERVER.Metropol2011.dbo.&submit=Suchen"> Tickets kaufen</a>
+  </div>
+</div>
+<!-- </div> -->
